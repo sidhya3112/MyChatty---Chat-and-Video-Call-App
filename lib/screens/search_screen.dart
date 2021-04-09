@@ -1,10 +1,11 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_chatty/models/user.dart';
+import 'package:my_chatty/provider/user_provider.dart';
 import 'package:my_chatty/utils/universal_variables.dart';
 import 'package:my_chatty/resources/firebase_repository.dart';
+import 'package:provider/provider.dart';
 import 'callscreens/pickup/pickup_layout.dart';
 import 'chatscreens/chat_screen.dart';
 
@@ -21,19 +22,21 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final UserProvider userProvider = Provider.of<UserProvider>(context);
+
     return PickupLayout(
       scaffold: Scaffold(
         appBar: AppBar(
-          flexibleSpace: Container(decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              colors: [
-                UniversalVariables.gradientColorStart,
-                UniversalVariables.gradientColorEnd
-              ]
-            )
-          ),),
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                  UniversalVariables.gradientColorStart,
+                  UniversalVariables.gradientColorEnd
+                ])),
+          ),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
@@ -95,7 +98,7 @@ class _SearchScreenState extends State<SearchScreen> {
                           searchedUser = User(
                               uid: data['uid'],
                               name: data['name'],
-                              profilePhoto: data['profilePhoto'],
+                              profilePhoto: data['profile_photo'],
                               username: data['username']);
 
                           return GestureDetector(
@@ -118,17 +121,17 @@ class _SearchScreenState extends State<SearchScreen> {
                                     child: CircleAvatar(
                                       radius: 30,
                                       backgroundImage: NetworkImage(
-                                        searchedUser.profilePhoto != null
-                                            ? searchedUser.profilePhoto
-                                            : 'https://www.freepik.com/free-icon/user-profile-icon_750909.htm',
-                                      ),
+                                          searchedUser.profilePhoto),
                                     ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         left: 75, top: 16, bottom: 18),
                                     child: Text(
-                                      searchedUser.username,
+                                      searchedUser.username ==
+                                              userProvider.getUser.username
+                                          ? "Me"
+                                          : searchedUser.username,
                                       style: TextStyle(
                                         fontWeight: FontWeight.w700,
                                         fontSize: 17,

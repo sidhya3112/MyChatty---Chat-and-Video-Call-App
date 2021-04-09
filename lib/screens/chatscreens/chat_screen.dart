@@ -1,6 +1,5 @@
 import 'dart:io';
 
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:emoji_picker/emoji_picker.dart';
@@ -9,6 +8,7 @@ import 'package:my_chatty/enum/view_state.dart';
 import 'package:my_chatty/models/message.dart';
 import 'package:my_chatty/models/user.dart';
 import 'package:my_chatty/provider/image_upload_provider.dart';
+import 'package:my_chatty/provider/user_provider.dart';
 import 'package:my_chatty/resources/firebase_repository.dart';
 import 'package:my_chatty/screens/callscreens/pickup/pickup_layout.dart';
 import 'package:my_chatty/screens/chatscreens/widgets/cached_image.dart';
@@ -399,6 +399,8 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   CustomAppBar customAppBar(context) {
+    final UserProvider userProvider = Provider.of<UserProvider>(context);
+
     return CustomAppBar(
       leading: IconButton(
         icon: Icon(
@@ -409,9 +411,9 @@ class _ChatScreenState extends State<ChatScreen> {
         },
       ),
       centerTitle: false,
-      title: Text(
-        widget.receiver.username,
-      ),
+      title: Text(widget.receiver.username == userProvider.getUser.username
+          ? "Me"
+          : widget.receiver.username),
       actions: <Widget>[
         IconButton(
           icon: Icon(
@@ -421,7 +423,7 @@ class _ChatScreenState extends State<ChatScreen> {
             await Permissions.cameraAndMicrophonePermissionsGranted()
                 ? CallUtils.dial(
                     from: sender, to: widget.receiver, context: context)
-                : { };
+                : {};
           },
         ),
         IconButton(

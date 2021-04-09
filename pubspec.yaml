@@ -30,40 +30,40 @@ dependencies:
   cupertino_icons: ^1.0.2
 
   # For making request to firestore database
-  cloud_firestore: ^0.12.9
+  cloud_firestore:
 
   # For handling authentication via firebase
-  firebase_auth: '0.11.1+7'
+  firebase_auth:
 
   # For handling google sign in
-  google_sign_in: 4.0.2
+  google_sign_in:
 
   # Shimmer effect library
-  shimmer: 1.0.1
+  shimmer:
 
   # Emojis
-  emoji_picker: ^0.1.0
+  emoji_picker:
 
   # image_picker
-  image_picker: ^0.6.3+1
+  image_picker:
 
   # path provider
-  path_provider: ^1.6.0
+  path_provider:
 
   # firebase storage
-  firebase_storage: ^3.1.1
+  firebase_storage:
 
   # provider
-  provider: ^4.0.3
+  provider:
 
   # cached network image
-  cached_network_image: ^2.0.0
+  cached_network_image:
 
   # agora rtc engine
-  agora_rtc_engine: ^1.0.8
+  agora_rtc_engine:
 
   # permission handler
-  permission_handler: 3.0.0
+  permission_handler:
 
 dev_dependencies:
   flutter_test:

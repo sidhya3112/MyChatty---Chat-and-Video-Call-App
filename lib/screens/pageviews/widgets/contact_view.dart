@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:my_chatty/models/contact.dart';
 import 'package:my_chatty/models/user.dart';
@@ -62,7 +61,9 @@ class ViewLayout extends StatelessWidget {
             ));
       },
       title: Text(
-        contact?.name ?? "..",
+        contact?.name == userProvider.getUser.name
+            ? "Me"
+            : contact?.name ?? "..",
         style:
             TextStyle(color: Colors.black, fontFamily: "Arial", fontSize: 19),
       ),
@@ -79,9 +80,9 @@ class ViewLayout extends StatelessWidget {
               radius: 80,
               isRound: true,
             ),
-           OnlineDotIndicator(
-             uid: contact.uid,
-           )
+            OnlineDotIndicator(
+              uid: contact.uid,
+            )
           ],
         ),
       ),
