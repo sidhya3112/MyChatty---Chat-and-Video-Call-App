@@ -11,7 +11,7 @@ class UniversalVariables {
   static final Color gradientColorEnd = Color(0xff0184dc);
 
   static final Color senderColor = Colors.indigo[700];
-  static final Color receiverColor = Colors.purpleAccent;
+  static final Color receiverColor = Colors.purple;
 
   static final Gradient fabGradient = LinearGradient(
       colors: [gradientColorStart, gradientColorEnd],
