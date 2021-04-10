@@ -60,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget loginButton() {
-    return FlatButton(
+    return MaterialButton(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       textColor: Colors.white,
       color: Colors.blue,
