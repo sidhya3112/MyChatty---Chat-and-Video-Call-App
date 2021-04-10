@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:emoji_picker/emoji_picker.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:linkable/linkable.dart';
 import 'package:my_chatty/enum/view_state.dart';
 import 'package:my_chatty/models/message.dart';
 import 'package:my_chatty/models/user.dart';
@@ -182,10 +183,11 @@ class _ChatScreenState extends State<ChatScreen> {
 
   getMessage(Message message) {
     return message.type != 'image'
-        ? Text(
-            message.message,
+        ? Linkable(
+            text: message.message,
+            textColor: Colors.white,
+            linkColor: Colors.lightBlue[200],
             style: TextStyle(
-              color: Colors.white,
               fontSize: 16.0,
             ),
           )
@@ -324,6 +326,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       ? setWritingTo(true)
                       : setWritingTo(false);
                 },
+
                 decoration: InputDecoration(
                   hintText: "Type a message",
                   hintStyle: TextStyle(
