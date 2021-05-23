@@ -1,12 +1,29 @@
 # MyChatty
 
-A functional chat and video calling app made with Flutter and Firebase.
+*A fully-functional chat and video-calling app for friends and family to connect and enjoy.*
 
-## Functionalities:
-1) Shows whether the user is online/offline.
-2) Send images from gallery as well as camera.
-3) Find new friends among the registered users in the app.
-4) One-to-one video call available with features like pause/play camera and mute/unmute mic.
+## Features:
+1) Uses Google Sign-In.
+2) On the Chat Log Screen, there is an indicator which shows whether the user is online (green) or offline (offline).
+3) Search screen to find your friends and family members if they are registered on the app and connect with them.
+4) Seamless chatting experience and photo sharing from gallery or camera.
+5) Seamless video calling experience with features like pause/play audio and video and also option for toggling camera. 
+6) Users can also send messages to themselves, which becomes an important feature since it allows saving important documents and chats which can be easily accessed when needed.
+
+## Tech Stack:
+
+1) Flutter/Dart
+2) Firebase (Authentication | Cloud Firestore | Storage)
+3) Agora SDK - for video calling 
+
+## Future Goals:
+
+1) To add more features like forwarding chats, deleting chats, read reciepts, adding call feature and more.
+2) Making the chats end-to-end encrypted.
+3) Enable video sharing, contact and location sharing also.
+4) Enable group chats.
+
+A lot more updates may be done as per requirement.
 
 ## Screenshots:
 
